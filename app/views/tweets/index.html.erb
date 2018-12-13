@@ -1,0 +1,6 @@
+<h1>Tweet一覧</h1>
+
+  <%= form_for(@tweet) do |f| %>
+    <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll'%>
+    <%= f.submit class:'btn btn-block btn-primary'%>
+  <% end %>

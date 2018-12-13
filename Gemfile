@@ -66,6 +66,7 @@ gem 'kaminari'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 group :production do
   gem 'pg', '0.21.0'
