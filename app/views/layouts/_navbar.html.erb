@@ -14,7 +14,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <img src="<%= current_user.image %>" alt="" class="img-circle twitter-img">
-          <li><%= link_to 'ログアウト', edit_user_registration_path, method: :delete %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to '新規登録', user_twitter_omniauth_authorize_path %></li>
         <% end %>
