@@ -12,18 +12,13 @@
       <p>検索フォーム設置予定</p>
     </div>
   </div>
+
   <div class="col-sm-8">
     <%= render 'preview' %>
   </div>
 
-  <div class="col-sm-8">
-    <% @tweets.each do |tweet| %>
-      <div class="diary">
-        <%= tweet.created_at.strftime('%Y/%m/%d') %>
-        <%= simple_format(tweet.content) %>
-      </div>
-    <% end %>
-    <%= paginate @tweets %>
+  <div id="tweets" class="col-sm-8">
+    <%= render 'tweets', tweets: @tweets %>
   </div>
 
 </div>

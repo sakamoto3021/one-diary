@@ -1,0 +1,7 @@
+<% tweets.each do |tweet| %>
+  <div class="diary">
+    <%= tweet.created_at.strftime('%Y/%m/%d') %>
+    <%= simple_format(tweet.content) %>
+  </div>
+<% end %>
+<%= paginate tweets %>

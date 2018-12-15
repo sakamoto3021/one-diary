@@ -8,11 +8,12 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
     @diary = current_user.tweets.build(params_tweet)
-    if @diary.save
-      @twitter.update(params[:tweet][:content])
+    if @diary.save && @twitter.update(params[:tweet][:content])
       flash[:success] = 'Tweetを保存しました'
-      redirect_to tweets_path
+      # render :index
+      # redirect_to tweets_path
     else
       flash.now[:danger] = '投稿に失敗しました'
       redirect_to tweets_path
