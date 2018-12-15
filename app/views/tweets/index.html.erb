@@ -1,6 +1,29 @@
-<h1>Tweet一覧</h1>
+<div class="row">
+  <h1>Tweet一覧</h1>
+  <div class="col-sm-4">
+    <div class="tweet-form">
+      <%= form_with model: @tweet do |f| %>
+        <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll'%>
+        <%= f.submit '投稿する', class:'btn btn-block btn-primary'%>
+      <% end %>
+    </div>
 
-  <%= form_for(@tweet) do |f| %>
-    <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll'%>
-    <%= f.submit class:'btn btn-block btn-primary'%>
-  <% end %>
+    <div class="serch-form" style="background: red">
+      <p>検索フォーム設置予定</p>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <%= render 'preview' %>
+  </div>
+
+  <div class="col-sm-8">
+    <% @tweets.each do |tweet| %>
+      <div class="diary">
+        <%= tweet.created_at.strftime('%Y/%m/%d') %>
+        <%= simple_format(tweet.content) %>
+      </div>
+    <% end %>
+    <%= paginate @tweets %>
+  </div>
+
+</div>

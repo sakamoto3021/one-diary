@@ -8,15 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-left" href="/">OSD(後で画像をつける)</a>
+      <a class="navbar-left" href="/"><img src="/images/otd.png" alt="OTD"></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <img src="<%= current_user.image %>" alt="" class="img-circle twitter-img">
+          <li><img src="<%= current_user.image %>" alt="" class="img-circle twitter-img"></li>
+          <li><%= link_to 'INDEX', tweets_path, class:'text-muted' %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to '新規登録', user_twitter_omniauth_authorize_path %></li>
+          <li><%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %></li>
         <% end %>
       </ul>
       </div>
