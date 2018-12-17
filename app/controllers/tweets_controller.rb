@@ -1,10 +1,11 @@
 class TweetsController < ApplicationController
-  before_action :sign_in_required
   before_action :set_twitter_client, only: [:create]
 
   def index
-    @tweet = current_user.tweets.build
-    @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
+    if user_signed_in?
+      @tweet = current_user.tweets.build
+      @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
+    end
   end
 
   def create
@@ -12,8 +13,6 @@ class TweetsController < ApplicationController
     @diary = current_user.tweets.build(params_tweet)
     if @diary.save && @twitter.update(params[:tweet][:content])
       flash[:success] = 'Tweetを保存しました'
-      # render :index
-      # redirect_to tweets_path
     else
       flash.now[:danger] = '投稿に失敗しました'
       redirect_to tweets_path

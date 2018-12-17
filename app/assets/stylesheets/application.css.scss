@@ -46,12 +46,30 @@
 
 .preview {
   marigin-top: 0;
-  p {
-    position: absolute;
-    display: inline;
+  .nickname {
     margin-left: 7px;
-    span {
+    .text-muted {
       margin-left: 5px;
     }
+    span{
+      margin-left: 7px;
+    }
   }
+}
+
+.tweet-day {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+}
+.tweet-day:before {
+	content: "";
+	flex-grow: 1;
+	height: 1px;
+	background: #444;
+	display: block;
+}
+.tweet-day:before {
+	margin-right: .4em;
+  background: linear-gradient(90deg, #888, transparent);
 }

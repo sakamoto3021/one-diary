@@ -1,6 +1,6 @@
 <% tweets.each do |tweet| %>
   <div class="diary">
-    <%= tweet.created_at.strftime('%Y/%m/%d') %>
+    <p class="tweet-day text-muted"><%= tweet.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[tweet.created_at.wday]}) %M:%S") %></p>
     <%= simple_format(tweet.content) %>
   </div>
 <% end %>
