@@ -1,12 +1,12 @@
-<h5>Twitterプレビュー</h5>
-<div class="panel panel-info preview">
-  <div class="panel-body">
-    <div>
+<div class="col-sm-8 preview-display">
+  <div class="panel panel-info preview">
+    <div class="panel-body">
       <img src="<%= current_user.image %>" alt="" class="img-circle pull-left">
-      <p class="nickname"><%= current_user.name %><span class="text-muted">@<%= current_user.nickname %></span></p>
-      <div id="main">
-
+      <p class="name"><%= current_user.name %><span class="text-muted">@<%= current_user.nickname %></span></p>
+      <div class="main-box">
+        <p id="main"></p>
       </div>
     </div>
+    <a href="#" class="preview-hide text-muted">プレビュー非表示&入力クリア</a>
   </div>
 </div>

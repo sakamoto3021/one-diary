@@ -13,9 +13,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><img src="<%= current_user.image %>" alt="" class="img-circle twitter-img"></li>
-          <li><%= link_to 'INDEX', tweets_path, class:'text-muted' %></li>
+          <li><%= link_to 'DIARY', tweets_path, class:'text-muted' %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <li><img src="<%= current_user.image %>" alt="" class="img-circle twitter-img"></li>
         <% else %>
           <li><%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %></li>
         <% end %>

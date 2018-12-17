@@ -1,7 +1,7 @@
 <% tweets.each do |tweet| %>
   <div class="diary">
     <p class="tweet-day text-muted"><%= tweet.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[tweet.created_at.wday]}) %M:%S") %></p>
-    <%= simple_format(tweet.content) %>
+    <div class="content"><%= simple_format(tweet.content) %></div>
   </div>
 <% end %>
 <%= paginate tweets %>
