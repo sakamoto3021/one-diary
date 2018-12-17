@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_twitter_client, only: [:create]
+  before_action :correct_user, only: [:destroy]
 
   def index
     if user_signed_in?
@@ -19,6 +20,11 @@ class TweetsController < ApplicationController
     end
   end
 
+  def destroy
+    @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
+    @tweet.destroy
+  end
+
   private
 
   def set_twitter_client
@@ -32,5 +38,12 @@ class TweetsController < ApplicationController
 
   def params_tweet
     params.require(:tweet).permit(:content)
+  end
+
+  def correct_user
+    @tweet = current_user.tweets.find_by(id: params[:id])
+    unless @tweet
+      redirect_to root_path
+    end
   end
 end

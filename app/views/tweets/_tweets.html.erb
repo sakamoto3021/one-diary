@@ -2,6 +2,7 @@
   <div class="diary">
     <p class="tweet-day text-muted"><%= tweet.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[tweet.created_at.wday]}) %M:%S") %></p>
     <div class="content"><%= simple_format(tweet.content) %></div>
+    <%= link_to '削除', tweet_path(tweet), method: :delete, data: { confirm: "本当に削除してよろしいですか？"}, class: 'glyphicon glyphicon-trash', remote: true %>
   </div>
 <% end %>
 <%= paginate tweets %>

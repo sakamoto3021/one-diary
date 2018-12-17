@@ -13,9 +13,10 @@
       <p>検索フォーム設置予定</p>
     </div>
   </div>
-
-  <%= render 'preview' %>
-
+  <div id="preview">
+    <%= render 'preview' %>
+  </div>
+  
   <div id="tweets" class="col-sm-8">
     <%= render 'tweets', tweets: @tweets %>
   </div>
@@ -40,4 +41,5 @@
       $(".preview-display > div").hide();
     });
   });
+
 </script>
