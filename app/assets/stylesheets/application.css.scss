@@ -14,15 +14,43 @@
  *= require_self
  */
 
+// 全体
+
  body{
    background: #FFFFFF;
    font-family: 'Lato', 'Noto Sans Japanese', '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
  }
-// 全体
+
+ footer {
+   margin-top: 200px;
+   list-style: none;
+ }
+
+ #sidebar {
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+ }
 
  h1 {
    margin: 0 0 8px 0;
    padding: 0
+ }
+
+ .btn-default {
+     display: inline-block;
+     padding: 0.5em 1em;
+     text-decoration: none;
+     border-radius: 3px;
+     color: #FFF;
+     background-image: -webkit-linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+     background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+     transition: .4s;
+ }
+
+ .btn-default :hover{
+     background-image: -webkit-linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+     background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
  }
 
  .twitter-img {
@@ -44,6 +72,8 @@
 .serch-form {
   margin-top: 10px;
 }
+
+// プレビュー
 
 .preview {
   height: auto;
@@ -77,6 +107,8 @@
   padding: 8px;
 }
 
+// コンテンツ
+
 .content {
   margin-left: 10px;
   font-size: 15px;
@@ -96,4 +128,30 @@
 	display: block;
   margin-right: .4em;
   background: linear-gradient(90deg, #8b4513, transparent);
+}
+
+.glyphicon-trash {
+  font-size: 16px;
+  margin-left: 7%;;
+}
+
+// 検索
+.search-form {
+  margin-top: 16px;
+  p {
+    font-size: 18px;
+  }
+  .search-start {
+    margin-top: 4px;
+    width: 70%
+  }
+  .search-end {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 70%;
+  }
+  .btn-default {
+    display: block;
+    clear: both;
+  }
 }

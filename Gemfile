@@ -68,6 +68,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'twitter'
+gem 'ransack'
 
 group :production do
   gem 'pg', '0.21.0'

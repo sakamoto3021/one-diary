@@ -5,7 +5,8 @@ class TweetsController < ApplicationController
   def index
     if user_signed_in?
       @tweet = current_user.tweets.build
-      @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
+      search_tweet
+      # @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
     end
   end
 
@@ -45,5 +46,14 @@ class TweetsController < ApplicationController
     unless @tweet
       redirect_to root_path
     end
+  end
+
+  def search_tweet
+    search_options = {
+      created_after: params[:created_after],
+      created_before: params[:created_before]
+    }
+    @q = Tweet.search(params[:q], search_options)
+    @tweets = @q.result.page(params[:page]).order('created_at DESC')
   end
 end

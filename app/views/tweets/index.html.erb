@@ -1,22 +1,27 @@
 <div class="row">
 <% if user_signed_in? %>
   <h1>Tweet一覧</h1>
-  <div class="col-sm-4">
+  <div id="sidebar" class="col-sm-4">
     <div class="tweet-form">
       <%= form_with model: @tweet do |f| %>
         <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll tweet-form', maxlength: '140' %>
-        <%= f.submit '投稿する', class:'btn btn-block btn-primary'%>
+        <%= f.submit '投稿する', class:'btn btn-block btn-default'%>
       <% end %>
     </div>
 
-    <div class="serch-form" style="background: red">
-      <p>検索フォーム設置予定</p>
+    <div class="form-group search-form">
+      <%= search_form_for(@q, url: root_path) do |f| %>
+        <p class="glyphicon glyphicon-search">検索</p>
+        <%= f.date_field :created_after, class:'form-control search-start' %>
+        <%= f.date_field :created_before, class:'form-control search-end pull-right' %>
+        <%= f.submit '検索', class:'btn-default pull-right' %>
+      <% end %>
     </div>
   </div>
   <div id="preview">
     <%= render 'preview' %>
   </div>
-  
+
   <div id="tweets" class="col-sm-8">
     <%= render 'tweets', tweets: @tweets %>
   </div>
@@ -31,7 +36,7 @@
 <script>
   $(document).ready(function() {
     $("textarea").keyup(function() {
-      $(".preview-display > div").show();
+      $(".preview-display > div").fadeIn(600);
       $("#main").html( $(this).val() );
     });
   });
@@ -41,5 +46,4 @@
       $(".preview-display > div").hide();
     });
   });
-
 </script>
