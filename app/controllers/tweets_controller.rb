@@ -1,28 +1,23 @@
 class TweetsController < ApplicationController
   before_action :set_twitter_client, only: [:create]
   before_action :correct_user, only: [:destroy]
+  before_action :search_tweet
+
 
   def index
     if user_signed_in?
       @tweet = current_user.tweets.build
-      search_tweet
-      # @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
     end
   end
 
   def create
-    @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
     @diary = current_user.tweets.build(params_tweet)
-    if @diary.save && @twitter.update(params[:tweet][:content])
-      flash[:success] = 'Tweetを保存しました'
-    else
-      flash.now[:danger] = '投稿に失敗しました'
+    unless @diary.save && @twitter.update(params[:tweet][:content])
       redirect_to tweets_path
     end
   end
 
   def destroy
-    @tweets = current_user.tweets.order('created_at DESC').page(params[:page])
     @tweet.destroy
   end
 
@@ -54,6 +49,6 @@ class TweetsController < ApplicationController
       created_before: params[:created_before]
     }
     @q = Tweet.search(params[:q], search_options)
-    @tweets = @q.result.page(params[:page]).order('created_at DESC')
+    @tweets = @q.result.page(params[:page]).per(50).order('created_at DESC')
   end
 end
