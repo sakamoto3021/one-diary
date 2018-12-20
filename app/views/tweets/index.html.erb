@@ -8,29 +8,35 @@
         <%= f.submit '投稿する', class:'btn btn-block btn-default'%>
       <% end %>
     </div>
-
-    <div class="form-group search-form">
-      <%= search_form_for(@q, url: root_path) do |f| %>
-        <p class="glyphicon glyphicon-search">範囲検索</p>
-        <%= f.date_field :created_after, class:'form-control search-start' %>
-        <%= f.date_field :created_before, class:'form-control search-end pull-right' %>
-        <%= f.submit '検索', class:'btn-default pull-right' %>
-      <% end %>
-    </div>
+    <%= render 'search' %>
   </div>
   <div id="preview">
     <%= render 'preview' %>
   </div>
-
   <div id="tweets" class="col-sm-8">
     <%= render 'tweets', tweets: @tweets %>
   </div>
-
   <% else %>
-
-    <h1>トップページ</h1>
-    <p>Twitterを日付ごとに保存</p>
-    <p>日記のように読み返せるように</p>
+    <% content_for :cover do %>
+      <div class="text-center toppage">
+        <p>今からちょうど一ヶ月前、自分がどこで何をして何を考えていたか、思い出すことができますか？</p>
+        <p>Twitterでタイムライン遡れば思い出せる？</p>
+        <p>めんどくさくない？</p>
+        <p>どうせならそのツイートをすぐに引っ張り出せるようにしませんか？</p>
+        <p>つまりは日記のようにいつでも読み返せるようにしてみませんか？</p>
+        <p>多くの場合、一つ一つのツイートは大した情報を持たないただの短文です。</p>
+        <p>しかし、それらがまとまればあなたに関する多くの情報を持つ文章になります。</p>
+        <p>つまりは日記です。</p>
+        <p>このサイトでは、日々のツイートを利用してあなたの日記を生成します。</p>
+        <ul>
+          <li>Twitterアカウントでログイン</li>
+          <li>投稿する</li>
+          <li>投稿がこのサイトに保存され、同時にTwitterにもツイートされる</li>
+          <li>以上</li>
+          <li>完全に個人で完結するサービスです。自分の日記を誰かに見られることはありません(日記を他人に読まれることほど気色悪いことはないですし)。</li>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
@@ -67,7 +73,7 @@
     $(".back-to-top").click(function() {
       $("html, body").animate( {
         scrollTop: 0
-        }, 600 );
+      }, 500 );
       return false
     });
   });
