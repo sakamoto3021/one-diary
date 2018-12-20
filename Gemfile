@@ -71,9 +71,9 @@ gem 'twitter'
 gem 'ransack'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog', '1.40.0'
 
 group :production do
   gem 'pg', '0.21.0'
   gem 'rails_12factor'
-  gem 'fog'
 end

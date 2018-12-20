@@ -50,7 +50,7 @@ class TweetsController < ApplicationController
       created_after: params[:created_after],
       created_before: params[:created_before]
     }
-    @q = Tweet.search(params[:q], search_options)
+    @q = Tweet.ransack(params[:q], search_options)
     @tweets = @q.result.page(params[:page]).per(50).order('created_at DESC')
   end
 end
