@@ -38,6 +38,10 @@
    padding: 0
  }
 
+.diary img, #image-preview {
+  border-radius: 10px;
+}
+
  .btn-default {
      display: inline-block;
      padding: 0.5em 1em;
@@ -80,7 +84,18 @@
 
 .tweet-form textarea{
   height: 120px;
-  width: 100%
+  width: 100%;
+}
+
+.image-form label{
+  color: white;
+  background-color: red;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+#tweet_form {
+  font-size: 12px;
 }
 
 .serch-form {
@@ -109,9 +124,15 @@
     font-size: 14px;
     font-weight: bold;
   }
+  #image-box {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 10%;
+  }
   a {
     font-size: 13.3px;
     position: absolute;
+    display: block;
     right: 10px;
     bottom: 0px;
   }

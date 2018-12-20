@@ -5,16 +5,21 @@
     <div class="tweet-form">
       <%= form_with model: @tweet do |f| %>
         <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll tweet-form', maxlength: '140' %>
-        <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
+        <div class="image-form">
+          <%= f.label :image, '写真を投稿する', for:'tweet_image' %>
+          <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png', style:'display: none' %>
+        </div>
         <%= f.submit '投稿する', class:'btn btn-block btn-default'%>
       <% end %>
     </div>
     <%= render 'search' %>
   </div>
+
   <div id="preview">
     <%= render 'preview' %>
   </div>
-  <div id="tweets" class="col-sm-8">
+
+  <div id="tweets" class="col-xs-8 pull-right">
     <%= render 'tweets', tweets: @tweets %>
   </div>
   <% else %>
@@ -49,6 +54,21 @@
     $("textarea").keyup(function() {
       $(".preview-display > div").fadeIn(500);
       $("#main").html( $(this).val() );
+    });
+  });
+
+  $(function(){
+    $("#tweet_image").change(function(e){
+      var file = e.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = (function(file){
+        return function(e){
+          $("#image-preview").attr("src", e.target.result);
+          $("#image-preview").attr("title", file.name);
+        };
+      })(file);
+      reader.readAsDataURL(file);
     });
   });
 
