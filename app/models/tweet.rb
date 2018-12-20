@@ -1,6 +1,8 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   validates :content, presence: true, length: { maximum: 140 }
+  validate :image_size
+  mount_uploader :image, ImageUploader
 
   scope :created_after, -> (time) {
     time = time.to_time
@@ -14,6 +16,14 @@ class Tweet < ApplicationRecord
   class << self
     def ransackable_scopes(auth_object = nil)
       [:created_after, :created_before]
+    end
+  end
+
+  private
+
+  def image_size
+    if image.size > 5.megabytes
+      errors.add(:image, "画像のサイズは5MBまでです")
     end
   end
 end

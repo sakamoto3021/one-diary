@@ -5,6 +5,7 @@
     <div class="tweet-form">
       <%= form_with model: @tweet do |f| %>
         <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll tweet-form', maxlength: '140' %>
+        <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
         <%= f.submit '投稿する', class:'btn btn-block btn-default'%>
       <% end %>
     </div>
