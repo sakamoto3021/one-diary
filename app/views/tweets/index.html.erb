@@ -33,7 +33,11 @@
     <p>日記のように読み返せるように</p>
   <% end %>
 </div>
+
+<a href="#" class="back-to-top">▲</a>
+
 <script>
+  // プレビュー表示
   $(document).ready(function() {
     $("textarea").keyup(function() {
       $(".preview-display > div").fadeIn(600);
@@ -41,9 +45,30 @@
     });
   });
 
+  // プレビュー非表示
   $(document).ready(function() {
     $(".preview-hide").click(function() {
       $(".preview-display > div").hide();
+    });
+  });
+
+  // トップに戻る
+  function updateButton() {
+    if ($(this).scrollTop() >= 200) {
+      $(".back-to-top").fadeIn();
+    } else {
+      $(".back-to-top").fadeOut();
+    }
+  }
+
+  $(document).ready(function() {
+    updateButton();
+    $(window).scroll(updateButton);
+    $(".back-to-top").click(function() {
+      $("html, body").animate( {
+        scrollTop: 0
+        }, 600 );
+      return false
     });
   });
 </script>
