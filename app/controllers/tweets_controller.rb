@@ -12,8 +12,8 @@ class TweetsController < ApplicationController
 
   def create
     @diary = current_user.tweets.build(params_tweet)
-    image = open(@diary.image.url)
-    unless @diary.save && @twitter.update_with_media(@diary.content.image)
+    image = open("public#{@diary.image.url}")
+    unless @diary.save && @twitter.update_with_media(@diary.content, image)
       redirect_to tweets_path
     end
   end
