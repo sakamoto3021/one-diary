@@ -2,7 +2,9 @@
 <% tweets.each do |tweet| %>
   <div class="diary">
     <p class="tweet-day text-muted"><%= tweet.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[tweet.created_at.wday]}) %H:%M") %></p>
-    <div class="content"><%= simple_format(tweet.content) %></div>
+    <div class="content">
+      <%= simple_format(tweet.content) %>
+    </div>
     <%= image_tag tweet.image.url if tweet.image? %>
     <%= link_to '', tweet_path(tweet), method: :delete, data: { confirm: "本当に削除してよろしいですか？"}, class: 'glyphicon glyphicon-trash', remote: true %>
   </div>
