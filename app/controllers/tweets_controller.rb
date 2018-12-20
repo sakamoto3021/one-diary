@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
   def create
     @diary = current_user.tweets.build(params_tweet)
     content = params[:tweet][:content]
-    image = params[:tweet][:image]
+    # image = params[:tweet][:image]
     unless @diary.save && @twitter.update(content)
       redirect_to tweets_path
     end
