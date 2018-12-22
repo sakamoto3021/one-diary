@@ -13,10 +13,13 @@ class TweetsController < ApplicationController
   def create
     @diary = current_user.tweets.build(params_tweet)
     image = open("public#{@diary.image.url}")
-    unless @diary.save && @twitter.update_with_media(@diary.content, image)
-      redirect_to tweets_path
-    end
-  end
+    if @diary.image.blank?
+       @diary.save && @twitter.update(@diary.content)
+     else
+       @diary.save && @twitter.update_with_media(@diary.content, image)
+     end
+     redirect_to tweets_path
+   end
 
   def destroy
     @tweet.destroy
@@ -50,6 +53,6 @@ class TweetsController < ApplicationController
       created_before: params[:created_before]
     }
     @q = Tweet.ransack(params[:q], search_options)
-    @tweets = @q.result.page(params[:page]).per(50).order('created_at DESC')
+    @tweets = @q.result.page(params[:page]).per(30).order('created_at DESC')
   end
 end

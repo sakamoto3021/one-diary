@@ -22,7 +22,7 @@
  }
 
  footer {
-   margin-top: 230px;
+   margin-top: 200px;
    margin-bottom: 20px;
    list-style: none;
  }
@@ -48,14 +48,13 @@
      text-decoration: none;
      border-radius: 3px;
      color: #FFF;
-     background-image: -webkit-linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
-     background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
-     transition: .4s;
- }
-
- .btn-default :hover{
-     background-image: -webkit-linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
-     background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+     background-image: -webkit-linear-gradient(45deg, #136FFF 0%, #8EB8FF 100%);
+     background-image: linear-gradient(45deg, #136FFF 0%, #8EB8FF 100%);
+     transition: .3s;
+     &:hover{
+     background-image: -webkit-linear-gradient(45deg, #136FFF 50%, #8EB8FF 100%);
+     background-image: linear-gradient(45deg, #136FFF 50%, #8EB8FF 100%);
+   }
  }
 
  .twitter-img {
@@ -80,7 +79,7 @@
   }
 }
 
-// tweets/index
+// フォーム
 
 .tweet-form textarea{
   height: 120px;
@@ -88,10 +87,17 @@
 }
 
 .image-form label{
-  color: white;
-  background-color: red;
+  color: #fff;
+  font-weight: normal;
+  background: linear-gradient(#dc143c, #ffa500);
   padding: 6px;
   border-radius: 12px;
+  opacity: 0.7;
+  transition: .4s;
+  &:hover {
+    color: #000;
+    opacity: 1;
+  }
 }
 
 #tweet_form {
@@ -101,6 +107,20 @@
 .serch-form {
   margin-top: 10px;
 }
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
 
 // プレビュー
 
@@ -163,13 +183,11 @@
   }
 }
 
-
-
 // コンテンツ
 
 .content {
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .tweet-day {
