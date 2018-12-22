@@ -14,6 +14,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'DIARY', tweets_path, class:'text-muted' %></li>
+          <li><%= link_to 'Twitterマイページ', "https://twitter.com/#{current_user.nickname}", target: '_blank', class:'text-muted' %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <li><img src="<%= current_user.image %>" alt="" class="img-circle twitter-img"></li>
         <% else %>
