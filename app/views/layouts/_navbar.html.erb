@@ -18,7 +18,7 @@
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <li><img src="<%= current_user.image %>" alt="" class="img-circle twitter-img"></li>
         <% else %>
-          <li><%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %></li>
+          <li class="login-button"><%= link_to image_tag("/images/twitter-log.png", class:'twitter-img'), user_twitter_omniauth_authorize_path %></li>
         <% end %>
       </ul>
       </div>

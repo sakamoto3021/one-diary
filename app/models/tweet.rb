@@ -22,8 +22,6 @@ class Tweet < ApplicationRecord
   private
 
   def image_size
-    if image.size > 5.megabytes
-      errors.add(:image, "画像のサイズは5MBまでです")
-    end
+    image.size > 5.megabytes
   end
 end

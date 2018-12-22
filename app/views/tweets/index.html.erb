@@ -1,12 +1,12 @@
 <div class="row">
 <% if user_signed_in? %>
-  <h1>Tweet一覧</h1>
   <div id="sidebar" class="col-sm-4">
     <div class="tweet-form">
       <%= form_with model: @tweet do |f| %>
         <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll tweet-form', maxlength: '140' %>
         <div class="image-form">
           <%= f.label :image, '写真を添付する', for:'tweet_image' %>
+          <small>※5MB以内</small>
           <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png', style:'display: none' %>
         </div>
         <%= f.submit '投稿する', class:'btn btn-block btn-default'%>
@@ -24,6 +24,22 @@
   </div>
   <% else %>
     <% content_for :cover do %>
+      <div class="cover">
+        <div class="cover-inner">
+          <h3 class="text-center">〜日記は続かないけど日々のTweetは欠かさないツイッタラーに捧ぐ〜</h3>
+          <div class="login-link">
+            <p class="link1"><%= link_to 'ログインする', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to '試しにログイン', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'とりあえずログイン', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'ログインしとく？', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'いっちょログイン', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'ログインと洒落込む', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'L,O,G,I,N', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'ログインってなんだっけ？', user_twitter_omniauth_authorize_path %></p>
+            <p><%= link_to 'ろぐいん', user_twitter_omniauth_authorize_path %></p>
+          </div>
+        </div>
+      </div>
       <div class="text-center toppage">
         <p>今からちょうど一ヶ月前、自分がどこで何をして何を考えていたか、思い出すことができますか？</p>
         <p>Twitterでタイムライン遡れば思い出せる？</p>
