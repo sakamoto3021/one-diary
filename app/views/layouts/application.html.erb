@@ -26,10 +26,16 @@
     </div>
 
     <footer>
-      <li class="text-center text-muted">
-        ©one-tweet-diary
-        <%= link_to '開発者Twitterページへ', 'https://twitter.com/rails24211493', target: '_blank' %>
-      </li>
+      <div class="text-center text-muted">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            © 2018 one-tweet-diary.
+          </li>
+          <li class="list-inline-item">
+            <%= link_to 'お問い合わせ(こちらからDMをお送りください)', 'https://twitter.com/rails24211493', target: '_blank', class: 'text-muted' %>
+          </li>
+        </ul>
+      </div>
     </footer>
   </body>
 </html>
