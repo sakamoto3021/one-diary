@@ -1,12 +1,13 @@
 class TweetsController < ApplicationController
   before_action :set_twitter_client, only: [:create]
   before_action :correct_user, only: [:destroy]
-  before_action :search_tweet
+  before_action :search_tweet, only: [:create, :destroy]
 
 
   def index
     if user_signed_in?
       @tweet = current_user.tweets.build
+      search_tweet
     end
   end
 
@@ -33,10 +34,6 @@ class TweetsController < ApplicationController
       config.consumer_secret = ENV['TWITTER_API_SECRET']
       config.access_token= current_user.token
       config.access_token_secret = current_user.secret
-      # config.consumer_key = ENV['TWITTER_API_KEY']
-      # config.consumer_secret = ENV['TWITTER_API_SECRET']
-      # config.access_token= ENV['TWITTER_ACCESS_TOKEN']
-      # config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
     end
   end
 
@@ -56,7 +53,7 @@ class TweetsController < ApplicationController
       created_after: params[:created_after],
       created_before: params[:created_before]
     }
-    @q = Tweet.ransack(params[:q], search_options)
+    @q = current_user.tweets.ransack(params[:q], search_options)
     @tweets = @q.result.page(params[:page]).per(30).order('created_at DESC')
   end
 end

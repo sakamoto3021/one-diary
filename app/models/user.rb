@@ -17,8 +17,6 @@ class User < ApplicationRecord
           image: auth.info.image,
           name: auth.info.name,
           nickname: auth.info.nickname,
-          # consumer_key: auth.extra.access_token.consumer.key,
-          # consumer_secret: auth.extra.access_token.consumer.secret,
           token: auth.credentials.token,
           secret: auth.credentials.secret
           )
