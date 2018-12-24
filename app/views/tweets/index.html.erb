@@ -28,15 +28,7 @@
         <div class="cover-inner">
           <h3 class="text-center">〜日記は続かないけど日々のTweetは欠かさないツイッタラーに捧ぐ〜</h3>
           <div class="login-link">
-            <p class="link1"><%= link_to 'ログインする', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to '試しにログイン', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'とりあえずログイン', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'ログインしとく？', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'いっちょログイン', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'ログインと洒落込む', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'L,O,G,I,N', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'ログインってなんだっけ？', user_twitter_omniauth_authorize_path %></p>
-            <p><%= link_to 'ろぐいん', user_twitter_omniauth_authorize_path %></p>
+            <%= link_to 'Twitterアカウントでログイン', user_twitter_omniauth_authorize_path, class:'btn-default btn-lg' %>
           </div>
         </div>
       </div>
@@ -51,6 +43,7 @@
         <p>つまりは日記です。</p>
         <p>このサイトでは、日々のツイートを利用してあなたの日記を生成します。</p>
         <ul>
+          <h3>使い方</h3>
           <li>Twitterアカウントでログイン</li>
           <li>投稿する</li>
           <li>投稿がこのサイトに保存され、同時にTwitterにもツイートされる</li>

@@ -89,8 +89,10 @@
   background: url("/images/log.jpg") center center no-repeat;
   background-size: cover;
   h3 {
+    width: 100%;
+    display: inline-block;
     color: #fff;
-    margin: 0;
+    margin-top: 30px;
   }
 }
 
@@ -105,8 +107,13 @@
   }
 }
 
-.login-link .link1 {
-  margin-top: 18px;
+.login-link{
+  a {
+    width: 305px;
+    font-size: 20px;
+    margin: 360px auto 10px;
+    display: block;
+  }
 }
 
 // フォーム
