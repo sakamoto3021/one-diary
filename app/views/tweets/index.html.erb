@@ -26,10 +26,12 @@
     <% content_for :cover do %>
       <div class="cover">
         <div class="cover-inner">
-          <h3 class="text-center">〜日記は続かないけど日々のTweetは欠かさないツイッタラーに捧ぐ〜</h3>
+          <h3 class="text-center">日記は続かないけど毎日のTweetは欠かさないツイッタラーに捧ぐ</h3>
+          <h3 class="text-center">〜そのTweet日記にしませんか？〜</h3>
           <div class="login-link">
             <%= link_to 'Twitterアカウントでログイン', user_twitter_omniauth_authorize_path, class:'btn-default btn-lg' %>
           </div>
+          <p>ログインから投稿までおよそ10秒！</p>
         </div>
       </div>
       <div class="text-center toppage">
@@ -41,12 +43,12 @@
         <p>多くの場合、一つ一つのツイートは大した情報を持たないただの短文です。</p>
         <p>しかし、それらがまとまればあなたに関する多くの情報を持つ文章になります。</p>
         <p>つまりは日記です。</p>
-        <p>このサイトでは、日々のツイートを利用してあなたの日記を生成します。</p>
+        <p>このサイトでは、ツイートするついでにあなただけの日記を生成します。</p>
         <ul>
           <h3>使い方</h3>
           <li>Twitterアカウントでログイン</li>
           <li>投稿する</li>
-          <li>投稿がこのサイトに保存され、同時にTwitterにもツイートされる</li>
+          <li>投稿がこのサイトに保存され、同じ内容がTwitter上に反映される</li>
           <li>以上</li>
           <li>完全に個人で完結するサービスです。自分の日記を誰かに見られることはありません(日記を他人に読まれることほど気色悪いことはないですし)。</li>
         </ul>
