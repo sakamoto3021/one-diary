@@ -1,9 +1,12 @@
 <div class="row">
 <% if user_signed_in? %>
+  <div id="flash">
+    <%= render 'layouts/flash' %>
+  </div>
   <div id="sidebar" class="col-sm-4">
     <div class="tweet-form">
       <%= form_with model: @tweet do |f| %>
-        <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！", class:'form-controll tweet-form', maxlength: '140' %>
+        <%= f.text_area :content, placeholder: "ここからTweetしてみましょう！（最大文字数140字）", class:'form-controll tweet-form', maxlength: '140' %>
         <div class="image-form">
           <%= f.label :image, '写真を添付する', for:'tweet_image' %>
           <small>※5MB以内</small>
@@ -84,15 +87,10 @@
     });
   });
 
-  // プレビュー非表示
-  // $(document).ready(function() {
-  //   $(".preview-hide").click(function() {
-  //     $(".preview-display > div").hide();
-  //   });
-  // });
+  // 投稿後のフラッシュを消す
+  $("#flash").fadeOut(11000);
 
-  // ローディング
-
+  // ローディングアニメーション
   $('input[type="submit"]').on('click', function(){
     setTimeout(function() {
       $('body').append('<div class="loader"><img src="images/ajax-loader.gif"></div>');

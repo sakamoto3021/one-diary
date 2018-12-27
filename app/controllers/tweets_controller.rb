@@ -14,10 +14,14 @@ class TweetsController < ApplicationController
   def create
     @diary = current_user.tweets.build(params_tweet)
     image = open("public#{@diary.image.url}")
-    if @diary.image.blank?
+    if @diary.content.present? && @diary.image.blank?
        @diary.save && @twitter.update(@diary.content)
-     else
+       flash[:success] = "正常に投稿されました"
+     elsif @diary.content.present? && @diary.image.present?
        @diary.save && @twitter.update_with_media(@diary.content, image)
+       flash[:success] = "正常に投稿されました"
+     else
+       flash[:danger] = "投稿に失敗しました。文字数とファイルサイズをお確かめください"
      end
      redirect_to tweets_path
    end

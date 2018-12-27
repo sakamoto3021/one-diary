@@ -1,3 +1,8 @@
 <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <div class="alert alert-<%= message_type %>">
+    <%= message %>
+    <% if flash[:success] %>
+      <p><%= link_to 'Twitterへ移動する（別タブで開きます）', "https://twitter.com/#{current_user.nickname}", target: '_blank' %></p>
+      <% end %>
+  </div>
 <% end %>
