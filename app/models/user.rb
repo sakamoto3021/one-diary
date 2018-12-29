@@ -8,7 +8,9 @@ class User < ApplicationRecord
    def self.find_for_oauth(auth)
       user = User.where(uid: auth.uid, provider: auth.provider).first
 
-      unless user
+      if user
+        user.update(token: auth.credentials.token, secret: auth.credentials.secret)
+      else
         user = User.create(
           uid:      auth.uid,
           provider: auth.provider,
